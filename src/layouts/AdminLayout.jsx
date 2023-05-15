@@ -9,7 +9,7 @@ import { routers } from '../router';
 import Sidebar from './Partials/Sidebar';
 import useAdminMenu from './Partials/useAdminMenu';
 
-const { Header, Sider } = Layout;
+const { Header, Sider,Footer } = Layout;
 
 const AdminLayout = () => {
     const [collapsed, setCollapsed] = useState(false);
@@ -70,9 +70,9 @@ const AdminLayout = () => {
                         >
                             {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
                         </Button>
-                        {/* <div className="logo" > */}
-                            <img style={{ height : '40px' , marginTop: '10px' }} src='https://sslwireless.com/wp-content/uploads/2020/05/ssl-wireless-logo.png'    />
-                         {/* </div> */}
+
+                        <img className="logo" src="https://sslwireless.com/wp-content/uploads/2020/05/ssl-wireless-logo.png"/>
+
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'flex-end', height: '100%', alignItems: 'center' }}>
                         {/* <div style={{ marginRight: '5px' }}>
@@ -128,7 +128,9 @@ const AdminLayout = () => {
                         })}
                     </Routes>
                 </Layout>
+
             </Layout>
+            <Footer style={{ textAlign: 'center' }}>SSL Wireless ©2023</Footer>
         </Layout>
     );
 };

@@ -6,6 +6,7 @@ import { Link, Route, Routes, useLocation, } from "react-router-dom";
 import { useGlobalContext } from '../context/GlobalContext';
 import { clearCookies } from '../utils/server/axiosServer';
 import { routers } from '../router';
+import Sidebar from './Partials/Sidebar';
 
 const { Header, Sider } = Layout;
 
@@ -104,14 +105,7 @@ const AdminLayout = () => {
                         setCollapsed(broken)
                     }}
                 >
-                    {/* <Menu
-                        mode="inline"
-                        openKeys={openKeys}
-                        onOpenChange={onOpenChange}
-                        defaultSelectedKeys={['dashboard']}
-                        style={{ height: '100vh' }}
-                        items={menu.menus}
-                    /> */}
+                 <Sidebar />
                 </Sider>
                 <Layout style={{ padding: '0 24px 24px' }}>
                     <Routes>

@@ -7,16 +7,18 @@ import { useGlobalContext } from '../context/GlobalContext';
 import { clearCookies } from '../utils/server/axiosServer';
 import { routers } from '../router';
 import Sidebar from './Partials/Sidebar';
+import useAdminMenu from './Partials/useAdminMenu';
 
 const { Header, Sider } = Layout;
 
 const AdminLayout = () => {
     const [collapsed, setCollapsed] = useState(false);
-    // const rootSubmenuKeys = Object.values(menu.rootMenus);
-    // const [openKeys, setOpenKeys] = useState(['admin-dashboard']);
+    const menu = useAdminMenu();
+    const rootSubmenuKeys = Object.values(menu.rootMenus);
+    const [openKeys, setOpenKeys] = useState(['admin-dashboard']);
     const { getGlobalState, setGlobalState } = useGlobalContext();
     const location = useLocation();
-    // const { rootMenu } = location.state || ''
+    const { rootMenu } = location.state || ''
 
     useEffect(() => {
 
@@ -25,7 +27,7 @@ const AdminLayout = () => {
         // console.log(token);
         if (!token) window.location = "/login";
 
-        // setOpenKeys([rootMenu]);
+        setOpenKeys([rootMenu]);
         const _userInfo = JSON.parse(localStorage.getItem("_userInfo") || "{}");
         setGlobalState((prevState) => ({
             ...prevState,
@@ -36,14 +38,14 @@ const AdminLayout = () => {
         }));
     }, [])
 
-    // const onOpenChange = (keys) => {
-    //     const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
-    //     if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
-    //         setOpenKeys(keys);
-    //     } else {
-    //         setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
-    //     }
-    // };
+    const onOpenChange = (keys) => {
+        const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
+        if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
+            setOpenKeys(keys);
+        } else {
+            setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
+        }
+    };
 
     const logout = () => {
         clearCookies();
@@ -105,7 +107,17 @@ const AdminLayout = () => {
                         setCollapsed(broken)
                     }}
                 >
-                 <Sidebar />
+                 {/* <Sidebar /> */}
+
+                 <Menu
+                        theme='dark'
+                        mode="inline"
+                        openKeys={openKeys}
+                        onOpenChange={onOpenChange}
+                        defaultSelectedKeys={['dashboard']}
+                        style={{ height: '100vh' }}
+                        items={menu.menus}
+                    />
                 </Sider>
                 <Layout style={{ padding: '0 24px 24px' }}>
                     <Routes>

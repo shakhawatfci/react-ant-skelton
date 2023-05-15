@@ -2,15 +2,16 @@ import React, { useEffect } from 'react';
 import { Route, Routes } from "react-router-dom";
 import { Card, Col, Row } from "antd";
 import LoginPage from '../pages/LoginPage';
+import Cookies from "js-cookie";
 // import '../assets/auth.css';
 
 const PublicLayout = () => {
 
     useEffect(() => {
-        /* const token = Cookies.get("_jwtToken");
+        const token = Cookies.get("_jwtToken");
          if (token) {
-             window.location = "/login";
-         }*/
+             window.location = "/admin";
+         }
     }, [])
 
     return (

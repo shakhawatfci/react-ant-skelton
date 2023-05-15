@@ -2,6 +2,7 @@
 import { Route, Routes } from "react-router-dom";
 import PublicLayout from "./layouts/PublicLayout";
 import AdminLayout from "./layouts/AdminLayout";
+import LoginPage from "./pages/LoginPage";
 // import registerServiceWorker from './ServiceWorker';
 
 const App = () => {
@@ -12,9 +13,11 @@ const App = () => {
     <>
 
       <Routes>
-        <Route path="/*" element={<PublicLayout />} >
+        <Route path="/" element={<LoginPage />} >
         </Route>
-        <Route path="admin/*" element={<AdminLayout />} >
+        <Route path="/login" element={<LoginPage />} >
+        </Route>
+        <Route path="/*" element={<AdminLayout />} >
         </Route>
       </Routes>
     </>

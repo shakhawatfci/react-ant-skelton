@@ -49,7 +49,7 @@ const AdminLayout = () => {
 
     const logout = () => {
         clearCookies();
-        window.location = "/login";
+        window.location = "/";
     }
 
 
@@ -70,7 +70,9 @@ const AdminLayout = () => {
                         >
                             {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
                         </Button>
-                        <div className="logo" />
+                        {/* <div className="logo" > */}
+                            <img style={{ height : '40px' , marginTop: '10px' }} src='https://sslwireless.com/wp-content/uploads/2020/05/ssl-wireless-logo.png'    />
+                         {/* </div> */}
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'flex-end', height: '100%', alignItems: 'center' }}>
                         {/* <div style={{ marginRight: '5px' }}>
@@ -110,7 +112,7 @@ const AdminLayout = () => {
                  {/* <Sidebar /> */}
 
                  <Menu
-                        theme='dark'
+                        theme='light'
                         mode="inline"
                         openKeys={openKeys}
                         onOpenChange={onOpenChange}

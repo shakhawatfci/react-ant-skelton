@@ -3,13 +3,19 @@ import Dashboard from "../pages/Dashboard";
 
 export const routers = [
 
+    // {
+    //     path: '/',
+    //     element: <Dashboard />,
+    //     permission: false,
+    // },
+
     {
-        path: '/admin',
+        path: '/dashboard',
         element: <Dashboard />,
         permission: false,
     },
     {
-        path: '/admin/category',
+        path: '/category',
         element: <Category />,
         permission: ['View Category', 'Create Category', 'Edit Category']
     }

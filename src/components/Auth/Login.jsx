@@ -6,6 +6,7 @@ import errorHandler from '../../utils/errorHanlder';
 import { LOGIN } from '../../api/auth';
 import { setCookiesFromAuthResponse } from '../../utils/server/axiosServer';
 
+
 const initialState = {
     email: 'admin@admin.com',
     password: '12345678'
@@ -18,7 +19,7 @@ const Login = () => {
     const onFinish = (values) => {
         axiosServer.post(LOGIN, values).then((res) => {
             setCookiesFromAuthResponse(res);
-            navigate(`/admin`);
+            navigate(`/dashboard`);
         }).catch((err) => { errorHandler(err) });
     };
 

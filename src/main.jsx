@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-// import './assets/layout.css';
+import './assets/css/layouts.css';
+import './assets/css/auth.css';
 // import 'antd/dist/antd.css';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';

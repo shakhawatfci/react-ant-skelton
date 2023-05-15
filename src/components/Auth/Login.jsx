@@ -1,9 +1,10 @@
 import { LockOutlined, MailOutlined } from '@ant-design/icons';
-import { Button, Form, Input } from 'antd';
+import { Button, Form ,Checkbox,Input } from 'antd';
 import { Link, useNavigate } from "react-router-dom";
 import axiosServer from '../../utils/server/axiosServer';
 import errorHandler from '../../utils/errorHanlder';
 import { LOGIN } from '../../api/auth';
+import '../../assets/css/login.css';
 import { setCookiesFromAuthResponse } from '../../utils/server/axiosServer';
 
 
@@ -25,48 +26,73 @@ const Login = () => {
 
     return (
         <>
-            <p style={{ fontSize: '18px', textAlign: 'center', fontWeight: 700 }}>Login</p>
-
-            <Form
-                form={form}
-                name="normal_login"
-                className="login-form"
-                onFinish={onFinish}
-                initialValues={initialState}
-            >
-                <Form.Item
-                    name="email"
-                    rules={[
-                        { required: true, message: 'Please input your email!' },
-                        { type: 'email', message: 'The input is not valid E-mail!' },
-                    ]}
-                >
-                    <Input prefix={<MailOutlined className="site-form-item-icon" />} placeholder="Email" />
-                </Form.Item>
-                <Form.Item
-                    name="password"
-                    rules={[{ required: true, message: 'Please input your Password!' }]}
-                >
-                    <Input.Password
-                        prefix={<LockOutlined className="site-form-item-icon" />}
-                        type="password"
-                        placeholder="Password"
-                    />
-                </Form.Item>
-
-                <Form.Item>
-                    <Button type="primary" htmlType="submit" className="login-form-button">
-                        Log in
-                    </Button>
-                </Form.Item>
-                <Form.Item>
-                    <div style={{ display: "flex", justifyContent: 'center' }}>
-                        <div className="login-form-forgot">
-                            <Link to="/forgot-password">Forgot password ?</Link>
-                        </div>
+            <div className="login-page">
+                <div className="login-box">
+                    <div className="illustration-wrapper">
+                        <img
+                            src="https://openclipart.org/image/400px/327157"
+                            alt="Login"/>
                     </div>
-                </Form.Item>
-            </Form>
+                    <Form name="login-form"
+                          labelCol={{span: 8,}}
+                          wrapperCol={{span: 16,}}
+                          onFinish={onFinish}
+                          initialValues={initialState}
+                          autoComplete="off">
+
+                        <p className="form-title">Welcome back</p>
+                        <p>Login to the Dashboard</p>
+
+                        <Form.Item
+                            label="email"
+                            name="email"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please input your email!',
+                                },
+                            ]}>
+                            <Input prefix={<MailOutlined className="site-form-item-icon" />}/>
+                        </Form.Item>
+
+                        <Form.Item
+                            label="Password"
+                            name="password"
+                            rules={[{
+                                    required: true,
+                                    message: 'Please input your password!',
+                                },
+                            ]}>
+                            <Input.Password  prefix={<LockOutlined className="site-form-item-icon" />}/>
+                        </Form.Item>
+
+                        <Form.Item
+                            name="remember"
+                            valuePropName="checked"
+                            wrapperCol={{
+                                offset: 8,
+                                span: 16,
+                            }}
+                        >
+                            <Checkbox>Remember me</Checkbox>
+                        </Form.Item>
+                        <Form.Item
+                            wrapperCol={{
+                                offset: 8,
+                                span: 16,
+                            }}
+                        >
+                            <Button type="primary" className="login-form-button" htmlType="submit"
+                                    value='Login' >
+                                Submit
+                            </Button>
+
+                        </Form.Item>
+
+                    </Form>
+                </div>
+            </div>
+
         </>
     );
 };

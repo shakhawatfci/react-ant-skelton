@@ -20,12 +20,9 @@ const AdminLayout = () => {
     useEffect(() => {
 
         const token = Cookies.get("_jwtToken");
-        const _jwtUserType = Cookies.get("_jwtUserType");
+        // const _jwtUserType = Cookies.get("_jwtUserType");
+        // console.log(token);
         if (!token) window.location = "/login";
-        if (_jwtUserType != 'admin') {
-            Cookies.set("_jwtToken", '');
-            window.location = "/login"
-        }
 
         // setOpenKeys([rootMenu]);
         const _userInfo = JSON.parse(localStorage.getItem("_userInfo") || "{}");

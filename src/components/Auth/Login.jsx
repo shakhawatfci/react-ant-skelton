@@ -18,7 +18,7 @@ const Login = () => {
     const onFinish = (values) => {
         axiosServer.post(LOGIN, values).then((res) => {
             setCookiesFromAuthResponse(res);
-            navigate(`/category`);
+            navigate(`/admin`);
         }).catch((err) => { errorHandler(err) });
     };
 

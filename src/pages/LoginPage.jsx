@@ -18,13 +18,9 @@ export default function LoginPage() {
 
     return (
         <div>
-        <Row justify="center" align="middle" style={{ marginTop: '100px' }}>
-            <Col xxl={8} xl={8} lg={8} md={12} sm={24} xs={24}>
-                <Card>
+
                  <Login />
-                </Card>
-            </Col>
-        </Row>
+
         </div>
     )
 }

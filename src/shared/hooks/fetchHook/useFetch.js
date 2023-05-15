@@ -14,7 +14,6 @@ const useFetch = ({ url, server = axiosServer, filter = {}, initialRequest = fal
         if (initialRequest) {
             loadData(filter)
         }
-        // eslint-disable-next-line
     }, []);
 
     const loadData = (filter) => {

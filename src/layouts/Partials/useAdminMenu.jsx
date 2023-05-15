@@ -7,7 +7,7 @@ export const ERootNavKey = {
     Dashboard: 'dashboard',
     SettingsManage: 'Settings',
     OrderManage: 'Order Manage',
-    Users: 'Users'
+    Users: 'Session'
 }
 const useAdminMenu = () => {
 
@@ -26,12 +26,8 @@ const useAdminMenu = () => {
                 icon: <UserSwitchOutlined />,
                 children: [
                     {
-                        label: <Link to="/admin/user" state={{ rootMenu: ERootNavKey.Users }}> Role Permission</Link>,
-                        key: 'user-list'
-                    },
-                    {
-                        label: <Link to="/admin/user/users" state={{ rootMenu: ERootNavKey.Users }}> Users </Link>,
-                        key: 'user-list'
+                        label: <Link to="/session" state={{ rootMenu: ERootNavKey.Users }}> Session List</Link>,
+                        key: 'session-list'
                     }
                 ],
             },

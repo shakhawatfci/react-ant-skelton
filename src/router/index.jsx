@@ -1,5 +1,6 @@
 import Category from "../pages/Category";
 import Dashboard from "../pages/Dashboard";
+import Session from "../pages/Session";
 
 export const routers = [
 
@@ -15,8 +16,8 @@ export const routers = [
         permission: false,
     },
     {
-        path: '/category',
-        element: <Category />,
+        path: '/session',
+        element: <Session />,
         permission: ['View Category', 'Create Category', 'Edit Category']
     }
 

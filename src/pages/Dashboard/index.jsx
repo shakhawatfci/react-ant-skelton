@@ -2,11 +2,11 @@ import React from 'react';
 import {Breadcrumb, Card} from "antd";
 import {Link} from "react-router-dom";
 import {HomeOutlined} from "@ant-design/icons";
-// import {useDocumentTitle} from "../../../shared/hooks/documentTitle/useDocumentTitle";
+import { useDocumentTitle } from '../../shared/hooks/documentTitle/useDocumentTitle';
 
 export default function Dashboard() {
 
-    // useDocumentTitle("Dashboard")
+    useDocumentTitle("Dashboard")
 
     return (
         <>

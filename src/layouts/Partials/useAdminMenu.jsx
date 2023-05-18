@@ -5,9 +5,7 @@ import { DashboardOutlined, SettingOutlined, ShoppingCartOutlined, UserSwitchOut
 
 export const ERootNavKey = {
     Dashboard: 'dashboard',
-    SettingsManage: 'Settings',
-    OrderManage: 'Order Manage',
-    Users: 'Users'
+    ACL: 'ACL'
 }
 const useAdminMenu = () => {
 
@@ -21,16 +19,16 @@ const useAdminMenu = () => {
                 icon: <DashboardOutlined />
             },
             {
-                label: ERootNavKey.Users,
-                key: ERootNavKey.Users,
+                label: ERootNavKey.ACL,
+                key: ERootNavKey.ACL,
                 icon: <UserSwitchOutlined />,
                 children: [
                     {
-                        label: <Link to="/admin/user" state={{ rootMenu: ERootNavKey.Users }}> Role Permission</Link>,
-                        key: 'user-list'
+                        label: <Link to="/admin/roles" state={{ rootMenu: ERootNavKey.ACL }}> Roles</Link>,
+                        key: 'role-list'
                     },
                     {
-                        label: <Link to="/admin/user/users" state={{ rootMenu: ERootNavKey.Users }}> Users </Link>,
+                        label: <Link to="/admin/users" state={{ rootMenu: ERootNavKey.ACL }}> Users </Link>,
                         key: 'user-list'
                     }
                 ],

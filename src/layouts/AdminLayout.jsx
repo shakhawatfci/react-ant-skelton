@@ -80,7 +80,7 @@ const AdminLayout = () => {
                         </div> */}
 
                         <div>
-                            <span style={{ fontWeight: 700, color: '#fff', marginRight: '5px' }}> {getGlobalState?.userProfile?.userInfo?.name || ''}</span>
+                            <span style={{ fontWeight: 700, color: '#fff', marginRight: '5px' }}> {getGlobalState?.userProfile?.userInfo?.username || ''}</span>
                             <Popover placement="bottomLeft" title="Account" content={
                                 <>
                                     <div>

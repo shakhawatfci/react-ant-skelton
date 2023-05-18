@@ -3,14 +3,14 @@ import { Button, Form ,Checkbox,Input } from 'antd';
 import { Link, useNavigate } from "react-router-dom";
 import axiosServer from '../../utils/server/axiosServer';
 import errorHandler from '../../utils/errorHanlder';
-import { LOGIN } from '../../api/auth';
+import { LOGIN } from '../../utils/api/auth';
 import '../../assets/css/login.css';
 import { setCookiesFromAuthResponse } from '../../utils/server/axiosServer';
 
 
 const initialState = {
-    email: 'admin@admin.com',
-    password: '12345678'
+    username: 'kminchelle',
+    password: '0lelplR'
 }
 
 const Login = () => {
@@ -20,7 +20,7 @@ const Login = () => {
     const onFinish = (values) => {
         axiosServer.post(LOGIN, values).then((res) => {
             setCookiesFromAuthResponse(res);
-            navigate(`/dashboard`);
+            navigate(`/admin/dashboard`);
         }).catch((err) => { errorHandler(err) });
     };
 
@@ -44,12 +44,12 @@ const Login = () => {
                         <p>Login to the Dashboard</p>
 
                         <Form.Item
-                            label="email"
-                            name="email"
+                            label="Email"
+                            name="username"
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Please input your email!',
+                                    message: 'Please input your Email!',
                                 },
                             ]}>
                             <Input prefix={<MailOutlined className="site-form-item-icon" />}/>

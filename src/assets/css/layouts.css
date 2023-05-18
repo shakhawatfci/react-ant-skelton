@@ -1,3 +1,7 @@
+body{
+    margin: 0 auto;
+}
+
 .logo {
     float: right;
     width: 148px;

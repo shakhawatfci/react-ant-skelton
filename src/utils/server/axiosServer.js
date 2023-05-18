@@ -3,7 +3,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 const axiosServer = axios.create({
-    baseURL: import.meta.env.API_BASE_URL || 'https://tutor.publicdemo.xyz/api/v1/'
+    baseURL: import.meta.env.API_BASE_URL || 'https://dummyjson.com'
 });
 
 export const setAuthToken = (token) => {
@@ -23,13 +23,13 @@ export const clearCookies = () => {
 
 export const setCookiesFromAuthResponse = (res) => {
 
-    Cookies.set("_jwtToken", res.data.data.access_token);
+    Cookies.set("_jwtToken", res.data.token);
     Cookies.set("_jwtLang", "en"); // en or ab
-    Cookies.set("_user_id", res.data.data.user.id);
+    Cookies.set("_user_id", res.data.id);
 
     localStorage.setItem(
         "_userInfo",
-        JSON.stringify(res.data.data.user)
+        JSON.stringify(res.data)
     );
 
     setAuthToken(Cookies.get("_jwtToken"));

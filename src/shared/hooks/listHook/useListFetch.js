@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
-import adminServer from "../../../utils/server/axiosServer.js";
-import errorHandler from '../../../utils/errorHanlder';
 
-const useListFetch = ({ url, server= adminServer, filter={} }) => {
+import axiosServer from "../../../utils/server/axiosServer";
+import errorHandler from "../../../utils/errorHanlder";
+
+
+const useListFetch = ({ url, server= axiosServer, filter={} }) => {
     const [data, setData] = useState({
         isLoading: true,
         hasError: false,
@@ -22,7 +24,7 @@ const useListFetch = ({ url, server= adminServer, filter={} }) => {
             data: null,
         });
         const params = {...filter };
-        adminServer.get(url, { params })
+        axiosServer.get(url, { params })
             .then((res) => {
                 setData( {
                     isLoading: false,

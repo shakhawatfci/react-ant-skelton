@@ -3,6 +3,8 @@ import Role from "../pages/Acl/Role";
 import User from "../pages/Acl/User";
 import CreateUser from "../pages/Acl/User/create";
 
+
+
 export const routers = [
 
     // {
@@ -16,6 +18,7 @@ export const routers = [
         permission: false,
     },
     {
+
         path: '/admin/roles',
         element: <Role />,
         permission: false,
@@ -35,5 +38,7 @@ export const routers = [
     //     element: <Category />,
     //     permission: ['View Category', 'Create Category', 'Edit Category']
     // }
+
+
 
 ];

@@ -30,7 +30,7 @@ const useFetch = ({ url, server = axiosServer, filter = {}, initialRequest = fal
                     isLoading: false,
                     hasError: false,
                     isComplete: true,
-                    data: res.data.data,
+                    data: res.data,
                 });
             }).catch((error) => {
                 setData(({

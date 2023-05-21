@@ -1,27 +1,43 @@
 import {useDocumentTitle} from "../../../shared/hooks/documentTitle/useDocumentTitle";
 import {Breadcrumb, Button, Card, Col, Form, Input, Radio, Row, Select, Space,notification} from 'antd';
 import {HomeOutlined, UnorderedListOutlined} from '@ant-design/icons';
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
+import useFetch from "../../../shared/hooks/fetchHook/useFetch.js";
 import axiosServer from "../../../utils/server/axiosServer";
 import errorHandler from "../../../utils/errorHanlder";
-import { API_USER_CREATE } from "../../../utils/api/settings";
+import {API_USER_BY_ID, API_USER_CREATE, API_USER_UPDATE} from "../../../utils/api/settings";
 
 
 const {Option} = Select;
-export default function CreateUser() {
-    useDocumentTitle("Create User")
+export default function EditUser() {
+    useDocumentTitle("Edit User")
 
     const [form] = Form.useForm();
+    const { id } = useParams();
+
+    const fetchUser = useFetch({
+        url: API_USER_BY_ID(id),
+        initialRequest: true
+    });
+
+    console.log(fetchUser.data?.lastName);
+
+    const initialState = {
+        //firstName: fetchUser.data?.firstName,
+        firstName: "ok",
+        lastName: fetchUser.data?.lastName,
+    }
+    console.log(initialState);
 
     const onFinish = (values) => {
-        axiosServer.post(API_USER_CREATE, values).then((res) => {
+        axiosServer.put(API_USER_UPDATE(fetchUser.data.id), values).then((res) => {
             notification.success({
                 message: 'Success',
-                description: 'User successfully created'
+                description: 'User successfully updated'
             });
-            form.resetFields();
-        }).catch((err) => { errorHandler(err)});
+        }).catch((err) => { errorHandler(err) });
     };
+
 
     return (
         <>
@@ -29,11 +45,11 @@ export default function CreateUser() {
                 <Breadcrumb.Item>
                     <Link to="/admin/dashboard"><HomeOutlined/></Link>
                 </Breadcrumb.Item>
-                <Breadcrumb.Item>Create User</Breadcrumb.Item>
+                <Breadcrumb.Item>Edit User</Breadcrumb.Item>
             </Breadcrumb>
 
-            <Card title="Create User" extra={<Link to="/admin/users"> <b><UnorderedListOutlined/> List</b></Link>} >
-                <Form form={form} layout="vertical" onFinish={onFinish} autoComplete="off">
+            <Card title="Edit User" extra={<Link to="/admin/users"> <b><UnorderedListOutlined/> List</b></Link>} >
+                <Form form={form} layout="vertical" onFinish={onFinish} autoComplete="off" initialValues={initialState}>
                     <Row gutter={20} >
                         <Col span={8} className="gutter-row">
                             <Form.Item name="firstName" label="First Name"

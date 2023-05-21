@@ -2,6 +2,7 @@ import Dashboard from "../pages/Dashboard";
 import Role from "../pages/Acl/Role";
 import User from "../pages/Acl/User";
 import CreateUser from "../pages/Acl/User/create";
+import EditUser from "../pages/Acl/User/edit.jsx";
 
 
 
@@ -31,6 +32,10 @@ export const routers = [
     {
         path: '/admin/user/create',
         element: <CreateUser />
+    },
+    {
+        path: '/admin/user/edit/:id',
+        element: <EditUser />
     },
 
     // {
